@@ -7,7 +7,7 @@ function colors {
 }
 
 function logo {
-  curl -s https://raw.githubusercontent.com/95brsu/tools/nuts.sh | bash
+  curl -s https://raw.githubusercontent.com/95brsu/tools/main/nuts.sh | bash
 }
 
 function line_1 {
@@ -23,11 +23,11 @@ function install_tools {
 }
 
 function install_docker {
-  curl -s https://raw.githubusercontent.com/95brsu/tools/install_docker.sh | bash
+  curl -s https://raw.githubusercontent.com/95brsu/tools/main/install_docker.sh | bash
 }
 
 function install_ufw {
-  curl -s https://raw.githubusercontent.com/95brsu/tools/install_ufw.sh | bash
+  curl -s https://raw.githubusercontent.com/95brsu/tools/main/install_ufw.sh | bash
 }
 
 function read_nodename {
