@@ -1,5 +1,18 @@
 #!/bin/bash
 
+exists()
+{
+  command -v "$1" >/dev/null 2>&1
+}
+if exists curl; then
+	echo ''
+else
+  sudo apt update && sudo apt install curl -y < "/dev/null"
+fi
+bash_profile=$HOME/.bash_profile
+if [ -f "$bash_profile" ]; then
+    . $HOME/.bash_profile
+fi
 
 echo "=================================================="
 echo -e "\033[0;35m"
@@ -16,32 +29,15 @@ echo "=================================================="
 sleep 2
 
 
-exists()
-{
-  command -v "$1" >/dev/null 2>&1
-}
-if exists curl; then
-	echo ''
-else
-  sudo apt update && sudo apt install curl -y < "/dev/null"
-fi
-bash_profile=$HOME/.bash_profile
-if [ -f "$bash_profile" ]; then
-    . $HOME/.bash_profile
-fi
-
 cd $HOME
 rm -rf subspace*
-wget -O subspace-node https://github.com/subspace/subspace/releases/download/gemini-1b-2022-june-03/subspace-node-ubuntu-x86_64-gemini-1b-2022-june-03
+wget -O subspace-node https://github.com/subspace/subspace/releases/download/gemini-1b-2022-june-03/subspace-node-ubuntu-x86_64-gemini-1b-2022-june-03 
 wget -O subspace-farmer https://github.com/subspace/subspace/releases/download/gemini-1b-2022-june-03/subspace-farmer-ubuntu-x86_64-gemini-1b-2022-june-03
 chmod +x subspace*
 mv subspace* /usr/local/bin/
 
 systemctl stop subspaced subspaced-farmer &>/dev/null
-systemctl disable subspaced subspaced-farmer
 rm -rf ~/.local/share/subspace*
-rm -rf /etc/systemd/system/subspaced*
-rm -rf /usr/local/bin/subspace*
 
 source ~/.bash_profile
 sleep 1
@@ -84,16 +80,6 @@ sudo systemctl restart subspaced
 sleep 10
 sudo systemctl restart subspaced-farmer
 
-echo "==================================================="
-echo -e '\n\e[42mCheck node status\e[0m\n' && sleep 1
-if [[ `service subspaced status | grep active` =~ "running" ]]; then
-  echo -e "Ваша нода \e[32minstalled and works\e[39m!"
-  echo -e "Проверить статус \e[7mservice subspaced status\e[0m"
-  echo -e "Нажмите \e[7mQ\e[0m для выхода из меню"
-else
-  echo -e "Ваша нода \e[31mwas not installed correctly\e[39m, Пожалуйста переустановите."
-fi
-sleep 2
 echo "==================================================="
 echo -e '\n\e[42mCheck farmer status\e[0m\n' && sleep 1
 if [[ `service subspaced-farmer status | grep active` =~ "running" ]]; then
