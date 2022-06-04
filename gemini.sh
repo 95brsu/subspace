@@ -16,7 +16,6 @@ echo "=================================================="
 sleep 2
 
 
-
 exists()
 {
   command -v "$1" >/dev/null 2>&1
@@ -39,7 +38,10 @@ chmod +x subspace*
 mv subspace* /usr/local/bin/
 
 systemctl stop subspaced subspaced-farmer &>/dev/null
+systemctl disable subspaced subspaced-farmer
 rm -rf ~/.local/share/subspace*
+rm -rf /etc/systemd/system/subspaced*
+rm -rf /usr/local/bin/subspace*
 
 source ~/.bash_profile
 sleep 1
@@ -51,7 +53,7 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=$(which subspace-node) --chain gemini-1 --execution wasm --pruning 1024 --keep-blocks 1024 --validator --name $SUBSPACE_NODENAME
+ExecStart=$(which subspace-node) --chain gemini-1 --execution wasm --keep-blocks 1024 --pruning archive --validator --name $SUBSPACE_NODENAME
 Restart=on-failure
 LimitNOFILE=65535
 
@@ -66,7 +68,7 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=$(which subspace-farmer) farm --reward-address $SUBSPACE_WALLET --plot-size 40G
+ExecStart=$(which subspace-farmer) farm --reward-address $SUBSPACE_WALLET --plot-size 100G
 Restart=on-failure
 LimitNOFILE=65535
 
