@@ -101,5 +101,5 @@ if [[ `service subspaced-farmer status | grep active` =~ "running" ]]; then
   echo -e "Проверить статус ноды \e[7mservice subspaced-farmer status\e[0m"
   echo -e "Нажмите \e[7mQ\e[0m for exit from status menu"
 else
-  echo -e "Ваш фармер \e[31mwas not installed correctly\e[39m, please reinstall."
+  echo -e "Ваш фармер \e[31mwas not installed correctly\e[39m, пожалуйста переустановите."
 fi
