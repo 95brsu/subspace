@@ -13,7 +13,6 @@ bash_profile=$HOME/.bash_profile
 if [ -f "$bash_profile" ]; then
     . $HOME/.bash_profile
 fi
-
 echo "=================================================="
 echo -e "\033[0;35m"
 echo " ::::    :::  ::     ::  :::::::::   ::::::::   ";
@@ -22,12 +21,11 @@ echo " :+:+:+  +:+ +:+    +:+     +:+     +:+         ";
 echo " +#+ +:+ +#+ +#+    +:+     +:+     +#++:++#++  ";
 echo " +#+  +#+#+# +#+    +#+     +#+             +#+ ";
 echo " #+#   #+#+# #+#    #+#     #+#     #+#     #+# ";
-echo " ###    ####  ########    ######    ########    ";
+echo " ###    ####   ######       ###        #####    ";
 echo -e "\e[0m"
 echo "=================================================="
 
 sleep 2
-
 
 cd $HOME
 rm -rf subspace*
@@ -81,11 +79,21 @@ sleep 10
 sudo systemctl restart subspaced-farmer
 
 echo "==================================================="
+echo -e '\n\e[42mCheck node status\e[0m\n' && sleep 1
+if [[ `service subspaced status | grep active` =~ "running" ]]; then
+  echo -e "Your Subspace node \e[32minstalled and works\e[39m!"
+  echo -e "You can check node status by the command \e[7mservice subspaced status\e[0m"
+  echo -e "Press \e[7mQ\e[0m for exit from status menu"
+else
+  echo -e "Your Subspace node \e[31mwas not installed correctly\e[39m, please reinstall."
+fi
+sleep 2
+echo "==================================================="
 echo -e '\n\e[42mCheck farmer status\e[0m\n' && sleep 1
 if [[ `service subspaced-farmer status | grep active` =~ "running" ]]; then
-  echo -e "Ваш фармер \e[32minstalled and works\e[39m!"
-  echo -e "Проверить статус ноды \e[7mservice subspaced-farmer status\e[0m"
-  echo -e "Нажмите \e[7mQ\e[0m for exit from status menu"
+  echo -e "Your Subspace farmer \e[32minstalled and works\e[39m!"
+  echo -e "You can check node status by the command \e[7mservice subspaced-farmer status\e[0m"
+  echo -e "Press \e[7mQ\e[0m for exit from status menu"
 else
-  echo -e "Ваш фармер \e[31mwas not installed correctly\e[39m, пожалуйста переустановите."
+  echo -e "Your Subspace farmer \e[31mwas not installed correctly\e[39m, please reinstall."
 fi
