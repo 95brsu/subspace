@@ -28,8 +28,8 @@ function colors {
 function update {
 
 cd $HOME
-wget -O subspace-node https://github.com/subspace/subspace/releases/download/gemini-1b-2022-june-08/subspace-node-ubuntu-x86_64-gemini-1b-2022-june-08
-wget -O subspace-farmer https://github.com/subspace/subspace/releases/download/gemini-1b-2022-june-08/subspace-farmer-ubuntu-x86_64-gemini-1b-2022-june-08
+wget -O subspace-node https://github.com/subspace/subspace/releases/download/gemini-1b-2022-jun-08/subspace-node-ubuntu-x86_64-gemini-1b-2022-jun-08
+wget -O subspace-farmer https://github.com/subspace/subspace/releases/download/gemini-1b-2022-jun-08/subspace-farmer-ubuntu-x86_64-gemini-1b-2022-jun-08
 chmod +x subspace-node
 chmod +x subspace-farmer
 mv subspace-node /usr/local/bin/
