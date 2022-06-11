@@ -15,7 +15,7 @@ echo "=================================================="
 sleep 2
 
 function line {
-  echo "----10.06.2022--------------------------------------------------------------------"
+  echo "----11.06.2022--------------------------------------------------------------------"
 }
 
 function colors {
@@ -42,7 +42,7 @@ systemctl restart subspaced
 colors
 line
 line
-echo -e "${RED}Устанавливаем обновление subspace от 8 june${NORMAL}"
+echo -e "${RED}Устанавливаем обновление subspace от 10 june${NORMAL}"
 update
 line
 line
