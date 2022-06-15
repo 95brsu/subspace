@@ -15,7 +15,7 @@ echo "=================================================="
 sleep 2
 
 function line {
-  echo "----11.06.2022--------------------------------------------------------------------"
+  echo "----15.06.2022--------------------------------------------------------------------"
 }
 
 function colors {
@@ -29,7 +29,7 @@ function update {
 
 sudo -i
 cd $HOME/subspace
-sed -i.bak "s/gemini-1b-2022-jun-08/gemini-1b-2022-jun-10/" docker-compose.yml
+sed -i.bak "s/:gemini-1b-2022.*/:gemini-1b-2022-jun-13/" docker-compose.yml
 docker-compose up -d
 }
 
