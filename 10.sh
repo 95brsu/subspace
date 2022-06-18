@@ -15,7 +15,7 @@ echo "=================================================="
 sleep 2
 
 function line {
-  echo "----15.06.2022--------------------------------------------------------------------"
+  echo "----18.06.2022--------------------------------------------------------------------"
 }
 
 function colors {
@@ -28,8 +28,10 @@ function colors {
 function update {
 
 cd $HOME
-wget -O subspace-node https://github.com/subspace/subspace/releases/download/gemini-1b-2022-jun-13/subspace-node-ubuntu-x86_64-gemini-1b-2022-jun-13
-wget -O subspace-farmer https://github.com/subspace/subspace/releases/download/gemini-1b-2022-jun-13/subspace-farmer-ubuntu-x86_64-gemini-1b-2022-jun-13
+sudo apt update && sudo apt install ocl-icd-opencl-dev libopencl-clang-dev -y
+systemctl stop subspaced subspaced-farmer
+wget -O subspace-node https://github.com/subspace/subspace/releases/download/gemini-1b-2022-jun-18/subspace-node-ubuntu-x86_64-gemini-1b-2022-jun-18
+wget -O subspace-farmer https://github.com/subspace/subspace/releases/download/gemini-1b-2022-jun-18/subspace-farmer-ubuntu-x86_64-gemini-1b-2022-jun-18
 chmod +x subspace-node
 chmod +x subspace-farmer
 mv subspace-node /usr/local/bin/
@@ -41,7 +43,7 @@ systemctl restart subspaced
 
 colors
 line
-echo -e "${RED}Устанавливаем обновление subspace от 10 june${NORMAL}"
+echo -e "${RED}Устанавливаем обновление subspace от 18 june${NORMAL}"
 update
 line
-echo -e "${RED}Скрипт завершил свою работу!!!Извините за внимание! <<< через 10 -15 сек systemctl restart subspaced-farmer  >>> ${NORMAL}"
+echo -e "${RED}Скрипт завершил свою работу!!!Извините за внимание! <<< через 30 сек systemctl restart subspaced-farmer  >>> ${NORMAL}"
